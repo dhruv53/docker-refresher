@@ -1,0 +1,26 @@
+version: "3.8"
+services:
+  backend:
+    build: ./backend
+    container_name: container-1
+    ports: 
+      - '4000:4000'
+    volumes: 
+      - ./backend:/app
+      - /app/node_modules
+  frontend:
+    build: ./frontend
+    container_name: container-2
+    ports:
+      - '3000:3000'
+    stdin_open: true
+    tty: true
+
+# To start:
+# docker-compose up
+
+# To stop:
+# docker-compose down
+
+# To stop and remove image and associated containers
+# docker-compose down -rmi all -v
